@@ -1,39 +1,23 @@
-import math
+#62-es számrendszerig tudunk átváltani
+base='0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
 
+def v2r(n, b): # value to representation
+    """Convert a positive number n to its digit representation in base b."""
+    digits = ''
+    while n > 0:
+        digits = base[n % b] + digits
+        n  = n // b
+    return digits
 
-def isPrime(num):
-    if num < 2:
-        return False
+def r2v(digits, b): # representation to value
+    """Compute the number given by digits in base b."""
+    n = 0
+    for d in digits:
+        n = b * n + base[:b].index(d)
+    return n
 
-    # keresse az osztókat a szám gyökéig
-
-    for i in range(2, int(math.sqrt(num)) + 1):
-
-        if num % i == 0:
-            return False
-
-    return True
-
-def main():
-
-    prime_srsz = int(input('Hanyadik prímet keressem: '))
-    primes = []
-    prime_num = 1
-    prime_index = 1
-
-    if prime_srsz<100000 :
-        while prime_index < prime_srsz+1:
-            prime_num += 1
-            if isPrime(prime_num):
-                primes.append(prime_num)
-                prime_index += 1
-
-
-        keresett_prim = primes[prime_index-2]
-        print('A keresett prím:',str(keresett_prim))
-
-    else:
-        print('túl sok idő')
-
-
-main()
+def b2b(digits, b1, b2):
+    """Convert the digits representation of a number from base b1 to base b2."""
+    return v2r(r2v(digits, b1), b2)
+print(v2r(124,62))
+print(r2v('20',62))
