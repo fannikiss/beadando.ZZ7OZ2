@@ -22,9 +22,6 @@ ALFABET_CODE_TABLE = {'A': '.-', 'B': '-...', 'C': '-.-.',
 
 MORSE_CODE_TABLE = dict((v,k) for (k,v) in ALFABET_CODE_TABLE.items())
 
-test_morse = ".-.. .. ..-. . / .. ... / - .... . / -... . ... - / .--. --- .. ... --- -. "
-test_2 = ".- --.. / . .-.. . - / .- / .-.. . --. .--- --- -... -... / -- . .-. . --. / ....- ..--- "
-
 # morse kódolás
 def morsetoalfabet(code):
     alfabet = ''
@@ -49,7 +46,7 @@ def alfabet_to_morse(message):
 
 
 def main():
-    uzenet = input('Üzenet -> majd ENTER: ')
+    uzenet = input('Üzenet:')
 
     #for char in uzenet:
     #    print(ALFABET_CODE_TABLE[char.upper()]),
@@ -57,7 +54,5 @@ def main():
     print('coded ->')
     print(alfabet_to_morse(uzenet))
 
-    print('decoded test ->')
-    print(morsetoalfabet(test_morse))
 
 main()
