@@ -1,23 +1,21 @@
 #62-es számrendszerig tudunk átváltani
 base='0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
 
-def v2r(n, b): # value to representation
-    """Convert a positive number n to its digit representation in base b."""
+def v2r(n, b): #átalaktíja a megadott számot, a megadott számrendszerbe
     digits = ''
     while n > 0:
         digits = base[n % b] + digits
         n  = n // b
     return digits
 
-def r2v(digits, b): # representation to value
-    """Compute the number given by digits in base b."""
+def r2v(digits, b): #számrendszerből vált vissza
     n = 0
     for d in digits:
         n = b * n + base[:b].index(d)
     return n
 
-def b2b(digits, b1, b2):
-    """Convert the digits representation of a number from base b1 to base b2."""
+def b2b(digits, b1, b2): #egy adott számrendszerből, egy adott számrendszerbe
     return v2r(r2v(digits, b1), b2)
+
 print(v2r(124,62))
 print(r2v('20',62))
